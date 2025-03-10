@@ -12,79 +12,98 @@
     />
     <title>Amigo Secreto</title>
   </head>
-
   <body>
     <main class="container">
       <header class="header">
-        <h1 class="header__title">
-          Amigo <span class="header__highlight">Secreto</span>
-        </h1>
-        <img
-          src="assets/amigo-secreto.png"
-          alt="Imagem representativa de amigo secreto"
-          class="header__image"
-        />
+        <div class="header__content">
+          <h1 class="header__title">
+            Amigo <span class="header__highlight">Secreto</span>
+          </h1>
+          <img
+            src="./assets/undraw_mail-sent_ujev (1).svg"
+            alt="Ilustração de presentes"
+            class="header__image"
+          />
+        </div>
       </header>
 
       <section class="form">
-        <h2 class="form__subtitle">Digite o nome dos amigos participantes</h2>
+        <div class="form__card">
+          <h2 class="form__subtitle">Gerencie seu sorteio</h2>
 
-        <div class="form__input-group">
-          <input
-            type="text"
-            id="amigo"
-            class="form__input"
-            placeholder="Digite um nome"
-          />
-          <button
-            class="form__button form__button--add"
-            onclick="adicionarAmigo()"
-          >
-            Adicionar
-          </button>
-        </div>
-
-        <ul
-          class="list form__list"
-          id="listaAmigos"
-          aria-labelledby="listaAmigos"
-          role="list"
-        ></ul>
-        <ul class="list form__result" id="resultado" aria-live="polite"></ul>
-
-        <div class="form__action">
-          <button
-            class="button form__button--draw"
-            onclick="sortearAmigo()"
-            aria-label="Sortear amigo secreto"
-          >
-            <img
-              src="assets/play_circle_outline.png"
-              alt="Ícone para sortear"
-              class="button__icon"
+          <div class="form__input-group">
+            <input
+              type="text"
+              id="amigo"
+              class="form__input"
+              placeholder="Nome do participante"
             />
-            Sortear amigo
-          </button>
+            <button
+              class="form__button form__button--add"
+              onclick="adicionarAmigo()"
+              id="adicionarAmigo"
+            >
+              Adicionar Nomes
+            </button>
+          </div>
+
+          <ul class="list form__participants" id="listaAmigos"></ul>
+
+          <div class="form__actions">
+            <button
+              class="form__button form__button--draw"
+              onclick="sortearAmigo()"
+              id="sortearAmigos"
+            >
+              <img
+                src="assets/play_icon.png"
+                alt="Sortear"
+                class="button__icon"
+              />
+              Realizar Sorteio
+            </button>
+
+            <button
+              class="form__button form__button--clear"
+              onclick="apagarNomes()"
+              id="deletarNomes"
+            >
+              <img
+                src="assets/del_icon.png"
+                alt="Limpar Nomes"
+                class="button__icon"
+              />
+              Limpar Nomes
+            </button>
+
+            <button
+              class="form__button form__button--reset"
+              onclick="reiniciarSorteio()"
+              id="reiniciarSorteios"
+            >
+              <img
+                src="assets/reload_icon.png"
+                alt="Reiniciar Sorteio"
+                class="button__icon"
+              />
+              Reiniciar Sorteio
+            </button>
+          </div>
         </div>
       </section>
 
       <section class="results">
-        <article class="results__item">
-          <p class="results__subtitle">Amigos incluídos</p>
-          <div class="results__content" id="lista-amigos"></div>
-        </article>
-        <article class="results__item">
-          <p class="results__subtitle">Sorteio</p>
-          <div class="results__content" id="lista-sorteio"></div>
-        </article>
-      </section>
+        <div class="results__grid">
+          <div class="results__card results__card--participants">
+            <h3 class="results__title">Participantes</h3>
+            <div class="results__content" id="lista-participantes"></div>
+          </div>
 
-      <section class="reset">
-        <article class="results__item">
-          <button class="form__button form__button--add" onclick="reiniciar()">
-            REINICIAR
-          </button>
-        </article>
+          <div class="results__card results__card--draw">
+            <h3 class="results__title">Resultado do Sorteio</h3>
+            <div class="results__content" id="resultado-sorteio"></div>
+          </div>
+        </div>
       </section>
     </main>
 
